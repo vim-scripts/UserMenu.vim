@@ -1,0 +1,6 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=252
+
+" For gvim.
+" Registers are good for executing vim commands but not perfect for inserting
+" longer parts of normal text. This menu for gvim help you easy creating,
+" saving end editing eg. headers for various .tex and .html files.
