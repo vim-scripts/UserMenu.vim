@@ -3,6 +3,7 @@
 " 
 " Author: Mikolaj Machowski
 " Date: 24.03.2002
+" Source: http://vim.sourceforge.net/scripts/script.php?script_id=____
 " Description:
 " For gvim.
 " Registers are good for executing vim commands but not perfect for inserting
@@ -19,17 +20,17 @@
 " your texts will be stored. In default configuration it is:
 " $HOME/.vim/usermenu/ (for unices).
 " 3. Configuration:
-" Path to libList.vim . It isn't necessary when libList.vim is in your plugin
+" Path to libList.vim . It is not necessary when libList is in your plugin
 " directory.
 source $HOME/.vim/scripts/libList.vim
 
-" Path to usermenu (for unices)
+" Path to usermenu
 let s:path = "$HOME/.vim/usermenu/"
 
 " Name of the folder with `macros'
 let s:localpath = "usermenu"
 
-" Action. Default is read, but maybe you want to change that (eg. source).
+" Action. Default is read, but maybe you want to change that (source).
 let s:action = "read"
 
 function! UserMenu0()
@@ -69,9 +70,9 @@ amenu 9000.50 &UserMenu.-sep1- :
 let basic_nu_m_list = 0
 
 while basic_nu_m_list < nu_m_list
- exe "amenu 9000.60 &UserMenu.&" . basic_nu_m_list . ":<Tab>" .
-  \ substitute(substitute(GetListItem(m_list, basic_nu_m_list), "^\/.*\/", "", ""), "\\.", "\\\\.", "g")
-  \ . " :call UserMenu('".GetListItem(m_list, basic_nu_m_list)."')<cr>"
+	let uu_item = GetListItem(m_list, basic_nu_m_list)
+	let um_item = fnamemodify(uu_item, ":p:t")
+ exe "amenu 9000.60 &UserMenu.&".basic_nu_m_list.":<Tab>".um_item." :call UserMenu('".uu_item."')<cr>"
  let basic_nu_m_list = basic_nu_m_list + 1
 endwhile
 
